@@ -7,10 +7,18 @@ describe("generator-npm-webpack:app", () => {
   beforeAll(() => {
     return helpers
       .run(path.join(__dirname, "../generators/app"))
-      .withPrompts({ someAnswer: true });
+      .withPrompts({});
   });
 
   it("creates files", () => {
-    assert.file(["dummyfile.txt"]);
+    assert.file([
+      ".gitignore",
+      ".npmignore",
+      "src/index.ts",
+      "package.json",
+      "readme.md",
+      "tsconfig.json",
+      "webpack.config.ts"
+    ]);
   });
 });

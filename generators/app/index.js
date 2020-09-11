@@ -2,6 +2,7 @@
 const Generator = require("yeoman-generator");
 const chalk = require("chalk");
 const yosay = require("yosay");
+const { mkdirSync } = require("fs");
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -12,6 +13,12 @@ module.exports = class extends Generator {
       type: Boolean,
       default: false,
       description: "Install the latest versions of all dependencies"
+    });
+
+    this.option("react", {
+      type: Boolean,
+      default: false,
+      description: "The package is a react component library"
     });
   }
 
@@ -82,13 +89,40 @@ module.exports = class extends Generator {
       {
         type: "input",
         name: "license",
-        message: "What license should the package use?",
+        message: "Which license should the package use?",
         default: "MIT"
       }
     ];
 
     // To access props later use this.props.someAnswer;
     this.props = await this.prompt(prompts);
+  }
+
+  updatingDependencies() {
+    if (this.options.update) {
+      yosay("Updating dependencies...");
+
+      this.npmInstall(
+        [
+          "@types/jest@latest",
+          "@types/webpack@latest",
+          "bundle-declarations-webpack-plugin@latest",
+          "clean-webpack-plugin@latest",
+          "jest@latest",
+          "ts-jest@latest",
+          "ts-loader@latest",
+          "ts-node@latest",
+          "typescript@latest",
+          "webpack@latest",
+          "webpack-cli@latest"
+        ],
+        { "save-dev": true }
+      );
+
+      if (this.options.react) {
+        this.npmInstall("@types/react@latest", { "save-dev": true });
+      }
+    }
   }
 
   writing() {
@@ -102,6 +136,11 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath(".npmignore"),
       this.destinationPath(".npmignore"),
+      this.props
+    );
+    this.fs.copyTpl(
+      this.templatePath("jest.config.ts"),
+      this.destinationPath("jest.config.ts"),
       this.props
     );
     this.fs.copyTpl(
@@ -124,28 +163,26 @@ module.exports = class extends Generator {
       this.destinationPath("webpack.config.ts"),
       this.props
     );
-
     this.fs.copyTpl(
-      this.templatePath("index.ts"),
+      this.templatePath("src/index.ts"),
       this.destinationPath("src/index.ts"),
       this.props
     );
 
-    if (this.options.update) {
-      yosay("Updating dependencies...");
-      this.npmInstall(
-        [
-          "@types/webpack@latest",
-          "bundle-declarations-webpack-plugin@latest",
-          "clean-webpack-plugin@latest",
-          "ts-loader@latest",
-          "ts-node@latest",
-          "typescript@latest",
-          "webpack@latest",
-          "webpack-cli@latest"
-        ],
-        { "save-dev": true }
-      );
+    if (!this.fs.exists(this.destinationPath("__tests__"))) {
+      mkdirSync(this.destinationPath("__tests__"));
+    }
+
+    if (this.options.react) {
+      this.fs.extendJSON(this.destinationPath("package.json"), {
+        devDependencies: {
+          "@types/react": "^16.9.46"
+        },
+        peerDependencies: {
+          react: "^16.13.1"
+        },
+        keywords: ["react"]
+      });
     }
   }
 
@@ -155,5 +192,9 @@ module.exports = class extends Generator {
       bower: false,
       yarn: false
     });
+  }
+
+  end() {
+    yosay(`${chalk.bold.greenBright(" SCAFFOLDING COMPLETE!")}`);
   }
 };
