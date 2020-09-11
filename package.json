@@ -1,8 +1,8 @@
 {
   "name": "generator-npm-webpack",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Template for creating typescript NPM packages using webpack",
-  "homepage": "",
+  "homepage": "https://github.com/dominicbirch/generator-npm-webpack",
   "author": {
     "name": "Dominic Birch",
     "email": "dominicbirch@outlook.com",
@@ -78,6 +78,9 @@
     "pretest": "eslint .",
     "test": "jest"
   },
-  "repository": "dominicbirch/generator-npm-webpack",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dominicbirch/generator-npm-webpack.git"
+  },
   "license": "MIT"
 }
