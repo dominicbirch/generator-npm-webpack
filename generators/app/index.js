@@ -134,7 +134,7 @@ module.exports = class extends Generator {
       this.props
     );
     this.fs.copyTpl(
-      this.templatePath(".npmignore"),
+      this.templatePath("_.npmignore"),
       this.destinationPath(".npmignore"),
       this.props
     );
