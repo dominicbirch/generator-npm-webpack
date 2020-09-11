@@ -1,5 +1,6 @@
 # generator-npm-webpack [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> Template for creating typescript NPM packages using webpack
+
+Generator to scaffold projects intended to expose typescript functionality as NPM packages, bundled using webpack.
 
 ## Installation
 
@@ -15,6 +16,13 @@ Then generate your new project:
 ```bash
 yo npm-webpack
 ```
+
+For help:
+
+```bash
+yo npm-webpack --help
+```
+
 
 ## Getting To Know Yeoman
 
