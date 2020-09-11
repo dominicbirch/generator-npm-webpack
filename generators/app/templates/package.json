@@ -9,9 +9,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "<%=author%> <<%=author.email%>> <%=author.homepage%>",
+  "author": "<%=author%> <<%=author_email%>> <%=author_homepage%>",
   "homepage": "<%=homepage%>",
-  "license": "MIT",
+  "license": "<%=license%>",
   "keywords": [],
   "repository": {
     "type": "git",

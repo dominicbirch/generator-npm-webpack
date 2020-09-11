@@ -43,7 +43,7 @@ module.exports = class extends Generator {
       {
         type: "input",
         name: "description",
-        message: "Description:",
+        message: "Describe the intended purpose of the package:",
         default: ""
       },
       {
@@ -55,14 +55,14 @@ module.exports = class extends Generator {
       },
       {
         type: "input",
-        name: "author.email",
+        name: "author_email",
         message: "What's your email address?",
         default: "",
         store: true
       },
       {
         type: "input",
-        name: "author.homepage",
+        name: "author_homepage",
         message: "What's your homepage?",
         default: "",
         store: true
@@ -78,6 +78,12 @@ module.exports = class extends Generator {
         name: "repo",
         message: "What's the repository URL of the project?",
         default: ""
+      },
+      {
+        type: "input",
+        name: "license",
+        message: "What license should the package use?",
+        default: "MIT"
       }
     ];
 
