@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Dominic Birch",
+      "authorEmail": "dominicbirch@outlook.com",
+      "authorUrl": "https://github.com/dominicbirch"
+    }
+  }
+}
