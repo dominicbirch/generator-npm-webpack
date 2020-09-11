@@ -11,7 +11,7 @@
   },
   "author": "<%=author%> <<%=author.email%>> <%=author.homepage%>",
   "homepage": "<%=homepage%>",
-  "license": "ISC",
+  "license": "MIT",
   "keywords": [],
   "repository": {
     "type": "git",
