@@ -37,15 +37,13 @@ module.exports = class extends Generator {
         type: "input",
         name: "name",
         message: "What name should be used for the npm package?",
-        default: /[\w .-]+$/i.exec(this.destinationPath())[0],
-        store: false
+        default: /[\w .-]+$/i.exec(this.destinationPath())[0]
       },
       {
         type: "input",
         name: "version",
         message: "What initial version should be used by the package?",
-        default: "1.0.0",
-        store: false
+        default: "1.0.0"
       },
       {
         type: "input",
@@ -57,22 +55,19 @@ module.exports = class extends Generator {
         type: "input",
         name: "author",
         message: "What's your name?",
-        default: "",
-        store: true
+        default: ""
       },
       {
         type: "input",
         name: "author_email",
         message: "What's your email address?",
-        default: "",
-        store: true
+        default: ""
       },
       {
         type: "input",
         name: "author_homepage",
         message: "What's your homepage?",
-        default: "",
-        store: true
+        default: ""
       },
       {
         type: "input",
@@ -129,12 +124,12 @@ module.exports = class extends Generator {
     this.log(yosay("Writing scaffold content..."));
 
     this.fs.copyTpl(
-      this.templatePath(".gitignore"),
+      this.templatePath("gitignore"),
       this.destinationPath(".gitignore"),
       this.props
     );
     this.fs.copyTpl(
-      this.templatePath("_.npmignore"),
+      this.templatePath("npmignore"),
       this.destinationPath(".npmignore"),
       this.props
     );
