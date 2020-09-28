@@ -1,6 +1,6 @@
 {
   "name": "generator-npm-webpack",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Generator for projects creating typescript NPM packages using webpack",
   "homepage": "https://github.com/dominicbirch/generator-npm-webpack",
   "author": {
