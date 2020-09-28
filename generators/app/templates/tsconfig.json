@@ -19,5 +19,11 @@
     "resolveJsonModule": true,
     "target": "ES5",
     "module": "ESNext"
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "target": "ES6",
+      "module": "CommonJS"
+    }
   }
 }
